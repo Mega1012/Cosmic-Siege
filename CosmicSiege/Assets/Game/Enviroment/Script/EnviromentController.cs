@@ -8,6 +8,11 @@ public class EnviromentController : MonoBehaviour
     public delegate void ParallaxEventFunc(bool shouldPlayParallax);
     public event ParallaxEventFunc parallaxEvent;
 
+    private void Awake()
+    {
+        instanceEnviroment = this;
+    }
+
     public void PlayParallax(bool shouldPlayParallax)
     {
         parallaxEvent(shouldPlayParallax);
