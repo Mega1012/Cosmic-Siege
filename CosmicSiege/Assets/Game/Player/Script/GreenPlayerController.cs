@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GreenPlayerController : ATransform
@@ -18,8 +16,9 @@ public class GreenPlayerController : ATransform
     private PlayerInput input;
 
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         input = new();
     }
 
@@ -32,5 +31,6 @@ public class GreenPlayerController : ATransform
     {
         Debug.Log("Teste Button");
         Instantiate(baseWeapon,tPosition.position,Quaternion.identity);
+        PlayAudio();
     }
 }
