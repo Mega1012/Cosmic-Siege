@@ -1,4 +1,6 @@
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GreenPlayerController : ATransform
 {
@@ -24,13 +26,17 @@ public class GreenPlayerController : ATransform
 
     void FixedUpdate()
     {
-        GSP+= ((input.MovPlayer() * moveSpeed) * Time.deltaTime);
+        GSP += ((input.MovPlayer() * moveSpeed) * Time.deltaTime);
+    }
+
+    private void Update()
+    {
+
     }
 
     public void Teste()
     {
-        Debug.Log("Teste Button");
-        Instantiate(baseWeapon,tPosition.position,Quaternion.identity);
+        Instantiate(baseWeapon, tPosition.position, Quaternion.identity);
         PlayAudio();
     }
 }
