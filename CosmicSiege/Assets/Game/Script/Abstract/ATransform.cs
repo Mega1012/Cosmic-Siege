@@ -2,29 +2,21 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(BoxCollider2D))]
-[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(HandleUpdateGlobalVolume))]
 public abstract class ATransform : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D boxCollider2d;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip clip;
+    [SerializeField] private HandleUpdateGlobalVolume handleAudio;
 
     protected virtual void Awake()
     {
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         boxCollider2d = GetComponentInChildren<BoxCollider2D>();
-        audioSource = GetComponentInChildren<AudioSource>();
-    }
-
-
-    //Essa funcao vai ser removida depois. Tem um jeito melhor de trabalhar com audio
-    public void PlayAudio()
-    {
-        audioSource.Play();
+        handleAudio = GetComponentInChildren<HandleUpdateGlobalVolume>();
     }
 
     /// <summary>
@@ -45,8 +37,13 @@ public abstract class ATransform : MonoBehaviour
     public bool GetFlipY() => spriteRenderer.flipY;
 
 
+    /// <summary>
+    /// Colisores
+    /// </summary>
     public BoxCollider2D GetBoxCollider2D => boxCollider2d;
 
+
+    public HandleUpdateGlobalVolume HAudio => handleAudio;
 
     /// <summary>
     /// Transform

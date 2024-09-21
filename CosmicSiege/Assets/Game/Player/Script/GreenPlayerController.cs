@@ -36,7 +36,6 @@ public class GreenPlayerController : ATransform
 
     public void Teste()
     {
-        Instantiate(baseWeapon, tPosition.position, Quaternion.identity);
-        PlayAudio();
+        GameObject ob = Instantiate(baseWeapon, tPosition.position, Quaternion.identity);
     }
 }
